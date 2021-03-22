@@ -2,6 +2,11 @@
   "name": "collegefounders",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://smart-network.herokuapp.com",
+  "engines": {
+    "node": "15.11.0",
+    "npm": "7.6.1"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
