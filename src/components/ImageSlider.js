@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import {Carousel} from 'antd';
 import { Progress,Tooltip } from 'antd';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import { object } from 'joi';
 
 const contentStyle = {
