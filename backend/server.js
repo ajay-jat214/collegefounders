@@ -10,9 +10,6 @@ cors = require("cors");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const url = 'mongodb://localhost:27017/database3';
-mongoose.connect(process.env.MONGODB_URI||url, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(()=>{console.log("mongodb is connected")});
 const server = http.createServer(app);
 var College = require("./schemas/colleges");
 var Student = require("./schemas/students");
@@ -45,16 +42,18 @@ app.post('/studentData',(req,res)=>{
     })
 })
 
-const db = mongoose.connection
-db.once('open', _ => {
-  console.log('Database connected:', url)
-})
-
-db.on('error', err => {
-  console.error('connection error:', err)
-})
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    process.env.MONGOHQ_URL ||
+    process.env.MONGOLAB_URI ||
+    "mongodb+srv://Ajay:@Ajstyles89@cluster0.yxlvh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (req, res) => {
+    console.log("connected to database");
+  }
+);
   
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("collegefounders/build"));
   const path = require("path");
   app.get("*", (req, res) => {

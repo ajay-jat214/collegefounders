@@ -38,5 +38,5 @@ const CollegeSchema=new mongoose.Schema({
 });
 
 
-var College=mongoose.model('scores2',CollegeSchema);
+var College=mongoose.model('collegefounders',CollegeSchema);
 module.exports=College;

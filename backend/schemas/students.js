@@ -25,5 +25,5 @@ const StudentSchema=new mongoose.Schema({
 	
 });
 
-var Student=mongoose.model('scores3',StudentSchema);
+var Student=mongoose.model('student',StudentSchema);
 module.exports=Student;
