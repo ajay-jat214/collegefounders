@@ -11,33 +11,39 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 const server = http.createServer(app);
-var College = require("./schemas/colleges");
+app.use(express.urlencoded({ extended: false }));
+const { MONGOURI } = require("./config/keys");
+var Collegefounders = require("./schemas/colleges");
 var Student = require("./schemas/students");
 
+
 app.post('/data',(req,res)=>{
-    console.log(req.body);
+    console.log(req.body,'yess');
     let body='';
+    
     req.on("data", (chunk) => {
       body += chunk.toString();
       const obj = JSON.parse(body);
       console.log(obj)
-      College.find({}, (err, data) => {
+      Collegefounders.find({}, (err, data) => {
           if (err) return res.json("error:server error");
-          res.send({data:data,message:'success'});
+          res.json({data:data,message:'success'});
         });
-      })
+
+        });
+    
 })
 
 app.post('/studentData',(req,res)=>{
-  console.log(req.body);
   let body='';
   req.on("data", (chunk) => {
     body += chunk.toString();
     const obj = JSON.parse(body);
-    console.log(obj)
-    Student.find({collegeId:obj.collegeId}, (err, data) => {
+    console.log(obj.collegeId)
+    Student.find({collegeId:obj.collegeId,}, (err, data) => {
+      console.log(data);
       if (err) return res.json("error:server error");
-      res.send({data:data,message:'success'});
+      res.json({data:data,message:'success'});
     });
     })
 })
@@ -46,13 +52,20 @@ mongoose.connect(
   process.env.MONGODB_URI ||
     process.env.MONGOHQ_URL ||
     process.env.MONGOLAB_URI ||
-    "mongodb+srv://Ajay:@Ajstyles89@cluster0.yxlvh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://Ajay:@Ajstyles89@cluster0.yxlvh.mongodb.net/mydatabase?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   (req, res) => {
     console.log("connected to database");
   }
 );
-  
+const oneHour = 3600000;
+app.use(express.static("www", { maxAge: oneHour }));
+
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
+app.disable("etag");
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("collegefounders/build"));
   const path = require("path");
