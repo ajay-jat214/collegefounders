@@ -18,9 +18,7 @@ var Student = require("./schemas/students");
 
 
 app.post('/data',(req,res)=>{
-    console.log(req.body,'yess');
     let body='';
-    
     req.on("data", (chunk) => {
       body += chunk.toString();
       const obj = JSON.parse(body);
@@ -40,7 +38,7 @@ app.post('/studentData',(req,res)=>{
     body += chunk.toString();
     const obj = JSON.parse(body);
     console.log(obj.collegeId)
-    Student.find({collegeId:obj.collegeId,}, (err, data) => {
+    Student.find({collegeId: obj.collegeId}, (err, data) => {
       console.log(data);
       if (err) return res.json("error:server error");
       res.json({data:data,message:'success'});

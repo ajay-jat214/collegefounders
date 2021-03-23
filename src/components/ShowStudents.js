@@ -51,13 +51,14 @@ const ShowStudents = (props) => {
   useEffect(()=>{
     fetch("http://localhost:3001/studentData", {
       method: "post",
+      mode: "no-cors",
       headers: { Authentication: "Content-Type:application/json" },
       body: JSON.stringify({collegeId:props.collegeId}),
     })
       .then((response) => response.json())
       .then((data) => {setStudents(data.data);})
       .catch((err) => console.log(err));
-  },[props.collegeId],[])
+  },[],[,props.collegeId])
 
     const [top,setTop]=useState('topLeft');
     const [bottom,setBottom]=useState('bottomRight');
