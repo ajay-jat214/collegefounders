@@ -32,7 +32,7 @@ function App() {
 
   useEffect(()=>{
   
-    fetch("https://gifted-bardeen-33b715.netlify.app/data", {
+    fetch("https://collegefounders.herokuapp.com/data", {
       method: "post",
       mode: "no-cors",
       headers: { Authentication: "Content-Type:application/json" },

@@ -50,7 +50,7 @@ const columns = [
 const ShowStudents = (props) => {
   const [Students,setStudents]=useState([]);
   useEffect(()=>{
-    axios.post('https://gifted-bardeen-33b715.netlify.app/studentData', {
+    axios.post('https://collegefounders.herokuapp.com/studentData', {
       collegeId:props.collegeId
     })
     .then(function (response) {
