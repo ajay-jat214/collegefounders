@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { Table, Tag, Radio, Space } from 'antd';
+const axios = require('axios');
 
 const columns = [
   {
@@ -49,15 +50,25 @@ const columns = [
 const ShowStudents = (props) => {
   const [Students,setStudents]=useState([]);
   useEffect(()=>{
-    fetch("http://localhost:3001/studentData", {
-      method: "post",
-      mode: "no-cors",
-      headers: { Authentication: "Content-Type:application/json" },
-      body: JSON.stringify({collegeId:props.collegeId}),
+    axios.post('https://app.netlify.com/sites/gifted-bardeen-33b715/settings/domain/studentData', {
+      collegeId:props.collegeId
     })
-      .then((response) => response.json())
-      .then((data) => {setStudents(data.data);})
-      .catch((err) => console.log(err));
+    .then(function (response) {
+      console.log(response);
+      setStudents(response.data.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    // fetch("http://localhost:3001/studentData", {
+    //   method: "post",
+    //   mode: "no-cors",
+    //   headers: { "Authentication": "Content-Type:application/json","Accept": "application/json" },
+    //   body: JSON.stringify({collegeId:props.collegeId}),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {setStudents(data.data);})
+    //   .catch((err) => console.log(err));
   },[],[,props.collegeId])
 
     const [top,setTop]=useState('topLeft');

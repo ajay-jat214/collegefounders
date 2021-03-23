@@ -32,7 +32,7 @@ function App() {
 
   useEffect(()=>{
   
-    fetch("http://localhost:3001/data", {
+    fetch("https://app.netlify.com/sites/gifted-bardeen-33b715/settings/domain/data", {
       method: "post",
       headers: { Authentication: "Content-Type:application/json" },
       body: JSON.stringify({collegeId:collegeId}),

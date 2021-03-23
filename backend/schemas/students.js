@@ -1,5 +1,4 @@
 const mongoose=require('mongoose');
-const bcrypt=require('bcrypt');
 
 const StudentSchema=new mongoose.Schema({
 		id:{

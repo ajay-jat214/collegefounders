@@ -34,16 +34,14 @@ app.post('/data',(req,res)=>{
 
 app.post('/studentData',(req,res)=>{
   let body='';
-  req.on("data", (chunk) => {
-    body += chunk.toString();
-    const obj = JSON.parse(body);
-    console.log(obj.collegeId)
-    Student.find({collegeId: obj.collegeId}, (err, data) => {
-      console.log(data);
+
+    console.log(req.body.collegeId)
+    Student.find({collegeId: req.body.collegeId}, (err, data) => {
       if (err) return res.json("error:server error");
+      console.log(data);
       res.json({data:data,message:'success'});
     });
-    })
+
 })
 
 mongoose.connect(
@@ -56,14 +54,8 @@ mongoose.connect(
     console.log("connected to database");
   }
 );
-const oneHour = 3600000;
-app.use(express.static("www", { maxAge: oneHour }));
 
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
 
-app.disable("etag");
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("collegefounders/build"));
   const path = require("path");
