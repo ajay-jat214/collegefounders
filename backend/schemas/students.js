@@ -1,28 +1,27 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose");
 
-const StudentSchema=new mongoose.Schema({
-		id:{
-			type:Number,
-			default:0
-		},
-		name:{
-			type:String,
-			default:''
-		},
-		collegeId:{
-			type:Number,
-			default:0
-		},
-		skills:{
-			type:String,
-			default:''
-		},
-		batch:{
-			type:Number,
-			default:0
-		},
-	
+const StudentSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    default: "",
+  },
+  name: {
+    type: String,
+    default: "",
+  },
+  collegeId: {
+    type: String,
+    default: "",
+  },
+  skills: {
+    type: Array,
+    default: [],
+  },
+  batch: {
+    type: Array,
+    default: [],
+  },
 });
 
-var Student=mongoose.model('student',StudentSchema);
-module.exports=Student;
+var Student = mongoose.model("collegeStudents", StudentSchema);
+module.exports = Student;
