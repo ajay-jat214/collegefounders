@@ -43,7 +43,7 @@ const ShowStudents = (props) => {
   const [Students, setStudents] = useState([]);
   useEffect(
     () => {
-      fetch("https://vibrant-mayer-9ca16c.netlify.app/studentData", {
+      fetch("https://collegefounders.herokuapp.com/studentData", {
         method: "post",
         headers: {
           Authentication: "Content-Type:application/json",
