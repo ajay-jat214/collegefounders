@@ -47,7 +47,6 @@ const ShowStudents = (props) => {
         method: "post",
         headers: {
           Authentication: "Content-Type:application/json",
-          Etag: "dlkjfj3ii3j",
         },
         body: JSON.stringify({ collegeId: props.collegeId }),
       })
