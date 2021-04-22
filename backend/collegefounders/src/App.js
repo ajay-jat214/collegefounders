@@ -36,7 +36,7 @@ function App() {
 
   useEffect(
     () => {
-      fetch("http://collegefounders.herokuapp.com/data", {
+      fetch("https://collegefounders.herokuapp.com/data", {
         method: "post",
         headers: { Authentication: "Content-Type:application/json" },
         body: JSON.stringify({ collegeId: collegeId }),
