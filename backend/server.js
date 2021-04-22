@@ -172,6 +172,10 @@ mongoose.connect(
   }
 );
 
+const oneHour = 3600000;
+
+app.use(express.static("www", { maxAge: oneHour }));
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("collegefounders/build"));
   const path = require("path");
