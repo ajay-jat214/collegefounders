@@ -20,7 +20,7 @@ const CollegeDetails = (props) => {
             props.collegeData.name + "                       (" + country + ")"
           }
           bordered={false}
-          style={{ width: "500px", height: "90vh" }}
+          style={{ width: "500px", minHeight: "650px" }}
         >
           <div style={{ textAlign: "center" }}>
             <img
