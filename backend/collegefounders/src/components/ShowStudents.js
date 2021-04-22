@@ -43,7 +43,7 @@ const ShowStudents = (props) => {
   const [Students, setStudents] = useState([]);
   useEffect(
     () => {
-      fetch("https://collegefounders.herokuapp.com/studentData", {
+      fetch("http://collegefounders.herokuapp.com/studentData", {
         method: "post",
         headers: {
           Authentication: "Content-Type:application/json",
