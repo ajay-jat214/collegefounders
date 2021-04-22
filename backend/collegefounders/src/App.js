@@ -15,6 +15,7 @@ import ImageSlider from "./components/ImageSlider";
 import Article from "./components/Article";
 import SideBar from "./components/SideBar";
 import SearchBar from "./components/SearchBar";
+import { Spin, Space } from "antd";
 import ShowStudents from "./components/ShowStudents";
 let data1 = [];
 
@@ -25,6 +26,7 @@ function App() {
   const articleRef2 = useRef();
   const articleRef3 = useRef();
   const [collegeId, setCollegeId] = useState(0);
+  const [message, setMessage] = useState("willLoad");
   const [dummyData, setDummyData] = useState(data1);
   const [mode, setMode] = useState("CollegeList");
   const [collegeName, setCollegeName] = useState("");
@@ -43,6 +45,7 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => {
+          if (data.message === "success") setMessage("loaded");
           setDummyData(data.data);
           data1 = data.data;
           datafilter = data.data;
@@ -172,13 +175,21 @@ function App() {
               >
                 <Col>
                   {mode === "CollegeList" ? (
-                    <CollegeList
-                      data={dummyData}
-                      CollegeDetails={CollegeDetailsFunction}
-                      stateFilter={stateFilter}
-                      courseFilter={courseFilter}
-                      tableChangeCall={tableChangeCall}
-                    />
+                    <div>
+                      {message === "loaded" ? (
+                        <CollegeList
+                          data={dummyData}
+                          CollegeDetails={CollegeDetailsFunction}
+                          stateFilter={stateFilter}
+                          courseFilter={courseFilter}
+                          tableChangeCall={tableChangeCall}
+                        />
+                      ) : (
+                        <Space size='middle'>
+                          <Spin size='large' />
+                        </Space>
+                      )}
+                    </div>
                   ) : mode === "studentsList" ? (
                     <div style={{ marginTop: "15px" }}>
                       <ShowStudents collegeId={collegeId} />
@@ -194,11 +205,13 @@ function App() {
                 </Col>
                 <Col>
                   <div style={{ width: "500px", flex: "1" }} ref={articleRef2}>
-                    <ImageSlider
-                      callBack={callBack}
-                      callBack2={callBack2}
-                      data={dummyData}
-                    />
+                    {message === "loaded" ? (
+                      <ImageSlider
+                        callBack={callBack}
+                        callBack2={callBack2}
+                        data={dummyData}
+                      />
+                    ) : null}
                   </div>
                 </Col>
               </Row>

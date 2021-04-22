@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Tag, Radio, Space } from "antd";
+import { Table, Tag, Radio, Space, Spin } from "antd";
 const axios = require("axios");
 
 const columns = [
@@ -41,6 +41,7 @@ const columns = [
 
 const ShowStudents = (props) => {
   const [Students, setStudents] = useState([]);
+  const [message, setMessage] = useState("willLoad");
   useEffect(
     () => {
       fetch("https://collegefounders.herokuapp.com/studentData", {
@@ -52,6 +53,7 @@ const ShowStudents = (props) => {
       })
         .then((response) => response.json())
         .then((data) => {
+          if (data.message === "success") setMessage("loaded");
           setStudents(data.data);
         })
         .catch((err) => console.log(err));
@@ -84,11 +86,17 @@ const ShowStudents = (props) => {
   return (
     <div>
       <div>
-        <Table
-          columns={columns}
-          pagination={{ position: [bottom] }}
-          dataSource={data}
-        />
+        {message === "loaded" ? (
+          <Table
+            columns={columns}
+            pagination={{ position: [bottom] }}
+            dataSource={data}
+          />
+        ) : (
+          <Space size='middle'>
+            <Spin size='large' />
+          </Space>
+        )}
       </div>
     </div>
   );
