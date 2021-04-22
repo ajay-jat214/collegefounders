@@ -36,7 +36,7 @@ function App() {
 
   useEffect(
     () => {
-      fetch("https://collegefounders.herokuapp.com/data", {
+      fetch("https://vibrant-mayer-9ca16c.netlify.app/data", {
         method: "post",
         headers: { Authentication: "Content-Type:application/json" },
         body: JSON.stringify({ collegeId: collegeId }),
