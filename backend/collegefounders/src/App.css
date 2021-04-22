@@ -1,8 +1,14 @@
-.Content{
-  background-image: url('brainstorming.png');
+.Content {
+  background-image: url("brainstorming.png");
   background-size: 150px 150px;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
   background-attachment: fixed;
+}
+
+@media (min-width: 1200px) {
+  .sliderClass {
+    min-width: 800px;
+  }
 }

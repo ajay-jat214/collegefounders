@@ -33,7 +33,9 @@ const columns = [
     dataIndex: "skills",
     render: (skills) => (
       <span>
-        <Tag key={skills}>{skills}</Tag>
+        <Tag key={skills} style={{ color: "#389e0d" }}>
+          {skills}
+        </Tag>
       </span>
     ),
   },

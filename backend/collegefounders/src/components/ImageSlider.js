@@ -23,13 +23,19 @@ const ImageSlider = (props) => {
           title={object.state + " : " + object.percent + "%"}
           placement='topLeft'
         >
-          <Progress percent={object.percent} style={{ cursor: "pointer" }} />
+          <Progress
+            percent={object.percent}
+            strokeColor='#389e0d'
+            style={{ cursor: "pointer" }}
+          />
         </Tooltip>
       </div>
     );
   };
+
   const callBack = (object) => props.callBack(object);
   const callBack2 = (object) => props.callBack2(object);
+
   const function2 = (object) => {
     return (
       <div
@@ -41,7 +47,11 @@ const ImageSlider = (props) => {
           title={object.course + " : " + object.percent + "%"}
           placement='topLeft'
         >
-          <Progress percent={object.percent} style={{ cursor: "pointer" }} />
+          <Progress
+            percent={object.percent}
+            style={{ cursor: "pointer" }}
+            strokeColor='#389e0d'
+          />
         </Tooltip>
       </div>
     );
@@ -100,7 +110,7 @@ const ImageSlider = (props) => {
   //percentage calculations
 
   return (
-    <Carousel autoplay>
+    <Carousel autoplay style={{ color: "green" }}>
       <div>
         <h2>Statewise</h2>
         {statePercent.map(function (object, index) {

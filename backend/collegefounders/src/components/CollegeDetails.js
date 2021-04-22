@@ -34,7 +34,7 @@ const CollegeDetails = (props) => {
               style={{
                 fontStyle: "italic",
                 fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "18px",
               }}
             >
               ESTD.
@@ -44,7 +44,7 @@ const CollegeDetails = (props) => {
               style={{
                 fontStyle: "italic",
                 fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "18px",
               }}
             >
               State
@@ -54,7 +54,7 @@ const CollegeDetails = (props) => {
               style={{
                 fontStyle: "italic",
                 fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "18px",
               }}
             >
               Community Strength
@@ -64,7 +64,8 @@ const CollegeDetails = (props) => {
               style={{
                 fontStyle: "italic",
                 fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "18px",
+                marginBottom: "8px",
               }}
             >
               Courses Offered

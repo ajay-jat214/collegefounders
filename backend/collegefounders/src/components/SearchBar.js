@@ -20,7 +20,7 @@ const SearchBar = (props) => {
   return (
     <Space direction='vertical'>
       <Search
-        placeholder='input search text'
+        placeholder='Search by Institution'
         allowClear
         enterButton='Search'
         size='large'

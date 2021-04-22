@@ -113,7 +113,12 @@ function App() {
   };
   return (
     <div
-      style={{ justify: "center", alignItems: "center", fontStyle: "italic" }}
+      style={{
+        justify: "center",
+        alignItems: "center",
+        fontStyle: "italic",
+        fontFamily: "calisto",
+      }}
       ref={articleRef}
     >
       <Layout style={{ minHeight: "100vh" }}>
@@ -204,7 +209,11 @@ function App() {
                   )}
                 </Col>
                 <Col>
-                  <div style={{ width: "500px", flex: "1" }} ref={articleRef2}>
+                  <div
+                    style={{ width: "500px", flex: "1" }}
+                    className='sliderClass'
+                    ref={articleRef2}
+                  >
                     {message === "loaded" ? (
                       <ImageSlider
                         callBack={callBack}
