@@ -17,6 +17,8 @@ var student = require("./schemas/students");
 var college = require("./schemas/colleges");
 
 app.post("/", (req, res) => {
+  //college generator
+
   // const cstate = [
   //   "Madhya Pradesh",
   //   "Maharashtra",
@@ -97,6 +99,9 @@ app.post("/studentData", (req, res) => {
 
     const obj = JSON.parse(body);
     const { collegeId } = obj;
+
+    //student community generator
+
     // sskills = [
     //   "C",
     //   "C++",
