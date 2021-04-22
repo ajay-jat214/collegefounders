@@ -175,7 +175,11 @@ mongoose.connect(
 const oneHour = 3600000;
 
 app.use(express.static("www", { maxAge: oneHour }));
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
 
+app.disable("etag");
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("collegefounders/build"));
   const path = require("path");
