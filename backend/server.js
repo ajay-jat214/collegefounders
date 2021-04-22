@@ -16,7 +16,7 @@ const { MONGOURI } = require("./config/keys");
 var student = require("./schemas/students");
 var college = require("./schemas/colleges");
 
-app.post("/data", (req, res) => {
+app.post("/", (req, res) => {
   // const cstate = [
   //   "Madhya Pradesh",
   //   "Maharashtra",
