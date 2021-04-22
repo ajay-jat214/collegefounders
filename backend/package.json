@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "proxy": "https://collegefounders.herokuapp.com",
+  "proxy": "http://localhost:3001",
   "engines": {
     "node": "15.11.0",
     "npm": "7.9.0"
