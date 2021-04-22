@@ -100,7 +100,7 @@ const CollegeList = (props) => {
         </Tooltip>
       )}
       <Table
-        pagination={pagination}
+        pagination={{ pageSize: 10 }}
         columns={columns}
         dataSource={
           props.stateFilter.length

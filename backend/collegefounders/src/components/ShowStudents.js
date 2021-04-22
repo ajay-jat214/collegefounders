@@ -91,7 +91,7 @@ const ShowStudents = (props) => {
         {message === "loaded" ? (
           <Table
             columns={columns}
-            pagination={{ position: [bottom] }}
+            pagination={{ pageSize: 20 }}
             dataSource={data}
           />
         ) : (
