@@ -73,7 +73,7 @@ const ShowStudents = (props) => {
       //   .catch((err) => console.log(err));
     },
     [],
-    [, props.collegeId]
+    [props]
   );
 
   const [top, setTop] = useState("topLeft");

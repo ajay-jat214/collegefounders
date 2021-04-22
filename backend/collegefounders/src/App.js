@@ -51,7 +51,7 @@ function App() {
         .catch((err) => console.log(err));
     },
     [],
-    [, collegeId, stateFilter, courseFilter]
+    [collegeId, stateFilter, courseFilter]
   );
 
   const CollegeDetailsFunction = (key) => {
