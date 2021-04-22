@@ -172,9 +172,6 @@ mongoose.connect(
   }
 );
 
-const oneHour = 3600000;
-
-app.use(express.static("www", { maxAge: oneHour }));
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
